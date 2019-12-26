@@ -9,6 +9,7 @@ public class ExplosionSkill : MonoBehaviour {
     public float power = 200.0f;
     public float upwardsModifier = 3.0f;
 
+
     private void Start()
     {
         Vector3 explosionPos = transform.position;
@@ -23,6 +24,7 @@ public class ExplosionSkill : MonoBehaviour {
             Rigidbody rigid = col.GetComponent<Rigidbody>();
             if(rigid != null)
             {
+                col.gameObject.GetComponent<GoblinControl>().HP -= 27;
                 rigid.AddExplosionForce(power, explosionPos, radius, upwardsModifier);
             }
         }
