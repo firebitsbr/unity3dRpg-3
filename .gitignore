@@ -4,3 +4,6 @@
 /obj/
 /3D_RPG_.sln
 /Assembly-CSharp.csproj
+/Temp/
+/.vs/
+/.metadata/
