@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  power: 132
+  power: 123
   upwardsModifier: 2.3
 --- !u!1 &1377129136804882
 GameObject:

@@ -6,7 +6,7 @@ public class ExplosionSkill : MonoBehaviour {
 
     //충돌체 검출 반경.
     public float radius = 5.0f;
-    public float power = 200.0f;
+    public float power = 200f;
     public float upwardsModifier = 3.0f;
 
 
@@ -24,7 +24,7 @@ public class ExplosionSkill : MonoBehaviour {
             Rigidbody rigid = col.GetComponent<Rigidbody>();
             if(rigid != null)
             {
-                col.gameObject.GetComponent<GoblinControl>().HP -= 27;
+                col.gameObject.GetComponent<GoblinControl>().HP -= 25;
                 rigid.AddExplosionForce(power, explosionPos, radius, upwardsModifier);
             }
         }
