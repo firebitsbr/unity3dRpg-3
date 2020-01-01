@@ -17,6 +17,7 @@ public class FighterControl : MonoBehaviour {
     private float gravity = 9.8f; //중력값.
     private float verticalSpeed = 0.0f; //수직 속도.
     private bool CannotMove = false; //이동 불가 플래그.
+    public bool isAttack = false;
 
     [Header("애니메이션관련속성")]
     public AnimationClip IdleAnimClip = null;
@@ -53,6 +54,7 @@ public class FighterControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
         myCharacterController = GetComponent<CharacterController>();
 
         myAnimation = GetComponent<Animation>();
@@ -286,10 +288,13 @@ public class FighterControl : MonoBehaviour {
             if(MyState != FighterState.Attack)
             {
                 MyState = FighterState.Attack;
+                isAttack = true;
                 AttackState = FighterAttackState.Attack1;
-            }else
-            {   //공격 중이라면 애니메이션이 일정 이상 재생이 돼었다면 다음 공격을 활성화.
-                switch(AttackState)
+            }else{
+                isAttack = false;
+
+                //공격 중이라면 애니메이션이 일정 이상 재생이 돼었다면 다음 공격을 활성화.
+                switch (AttackState)
                 {
                     case FighterAttackState.Attack1:
                         if(myAnimation[Attack1AnimClip.name].normalizedTime > 0.1f)
@@ -326,6 +331,7 @@ public class FighterControl : MonoBehaviour {
             {
                 AttackState = FighterAttackState.Attack1;
                 NextAttack = false;
+                MyState = FighterState.Attack;
             }
             MyState = FighterState.Skill;
         }

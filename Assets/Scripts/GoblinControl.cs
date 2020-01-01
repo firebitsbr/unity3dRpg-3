@@ -16,6 +16,7 @@ public class GoblinControl : MonoBehaviour
     public Transform TargetTransform = null;
     public Vector3 TargetPosition = Vector3.zero;
 
+
     private Animation myAnimation = null;
     private Transform myTransform = null;
 
@@ -227,8 +228,7 @@ public class GoblinControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //플레이어의 공격에 맞았다면.
-        if (other.gameObject.CompareTag("PlayerAttack") == true)
-        {
+        if (other.gameObject.CompareTag("PlayerAttack") == true && TargetPlayer.GetComponent<FighterControl>().isAttack) {
             HP -= 21;
             if (HP > 0)
             {
