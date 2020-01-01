@@ -228,8 +228,8 @@ public class GoblinControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //플레이어의 공격에 맞았다면.
-        if (other.gameObject.CompareTag("PlayerAttack") == true && TargetPlayer.GetComponent<FighterControl>().isAttack) {
-            HP -= 21;
+        if (other.gameObject.CompareTag("PlayerAttack") == true) {
+            HP -= 23;
             if (HP > 0)
             {
                 //피격 이펙트 생성.
@@ -238,8 +238,11 @@ public class GoblinControl : MonoBehaviour
                 myAnimation.CrossFade(DamageAnimClip.name);
                 //피격 트위닝 이펙트 재생.
                 DamageTweenEffect();
-                //고블린 속도 저하 2초간
-                StartCoroutine(MoveSlow());
+                if (TargetPlayer.GetComponent<FighterControl>().isAttack)
+                {
+                    //고블린 속도 저하 2초간
+                    StartCoroutine(MoveSlow());
+                }
             }
             else
             {
@@ -249,10 +252,10 @@ public class GoblinControl : MonoBehaviour
     }
 
     IEnumerator MoveSlow() {
-        MoveSpeed = 2;
-        myAnimation[AttackAnimClip.name].speed = 0.5f;
+        MoveSpeed = 0.5f;
+        myAnimation[AttackAnimClip.name].speed = 0.23f;
 
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(5.7f);
 
         MoveSpeed = 3;
         myAnimation[AttackAnimClip.name].speed = 1.0f;

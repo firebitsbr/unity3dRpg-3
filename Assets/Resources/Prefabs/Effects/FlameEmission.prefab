@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  power: 200
-  upwardsModifier: 3
+  power: 99
+  upwardsModifier: 1.57
 --- !u!1 &2523072894024694098
 GameObject:
   m_ObjectHideFlags: 0

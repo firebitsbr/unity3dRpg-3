@@ -331,7 +331,6 @@ public class FighterControl : MonoBehaviour {
             {
                 AttackState = FighterAttackState.Attack1;
                 NextAttack = false;
-                MyState = FighterState.Attack;
             }
             MyState = FighterState.Skill;
         }

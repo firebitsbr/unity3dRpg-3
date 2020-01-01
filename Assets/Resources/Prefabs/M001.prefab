@@ -1024,10 +1024,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goblinState: 0
   MoveSpeed: 3
-  TargetPlayer: {fileID: 4025349823039641270, guid: 656bc9bed1917b54d9bd6a0d6f1d2125,
-    type: 3}
-  TargetTransform: {fileID: 4019797023289155048, guid: 656bc9bed1917b54d9bd6a0d6f1d2125,
-    type: 3}
+  TargetPlayer: {fileID: 0}
+  TargetTransform: {fileID: 0}
   TargetPosition: {x: 0, y: 0, z: 0}
   IdleAnimClip: {fileID: 7400000, guid: 0e1b3b2533c666d46a01c2027f9fc9a6, type: 3}
   MoveAnimClip: {fileID: 7400000, guid: 80271b9cbbb8d444c9293c0358cf120e, type: 3}
