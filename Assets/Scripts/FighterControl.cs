@@ -12,7 +12,7 @@ public class FighterControl : MonoBehaviour {
     public float VelocityChangeSpeed = 0.1f;//속도가 변경되기 위한 속도.
     private Vector3 CurrentVelocity = Vector3.zero;
     private Vector3 MoveDirection = Vector3.zero;
-    private CharacterController myCharacterController = null;
+    private CharacterController myCharacterController = null; 
     private CollisionFlags collisionFlags = CollisionFlags.None;
     private float gravity = 9.8f; //중력값.
     private float verticalSpeed = 0.0f; //수직 속도.
@@ -466,7 +466,7 @@ public class FighterControl : MonoBehaviour {
             if (HP > 0)
             {
                 //피격 이펙트 생성.
-                Instantiate(DamageEffect, transform.position, Quaternion.identity);
+                //Instantiate(DamageEffect, transform.position, Quaternion.identity);
                 //피격 애니메이션 재생.
                 myAnimation.CrossFade(DamageAnimClip.name);
                 //피격 트위닝 이펙트 재생.
