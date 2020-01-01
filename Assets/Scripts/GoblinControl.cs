@@ -237,13 +237,25 @@ public class GoblinControl : MonoBehaviour
                 //피격 애니메이션 재생.
                 myAnimation.CrossFade(DamageAnimClip.name);
                 //피격 트위닝 이펙트 재생.
-                DamageTweenEffect(); 
+                DamageTweenEffect();
+                //고블린 속도 저하 2초간
+                StartCoroutine(MoveSlow());
             }
             else
             {
                 goblinState = GoblinState.Die;
             }
         }
+    }
+
+    IEnumerator MoveSlow() {
+        MoveSpeed = 2;
+        myAnimation[AttackAnimClip.name].speed = 0.5f;
+
+        yield return new WaitForSeconds(3.0f);
+
+        MoveSpeed = 3;
+        myAnimation[AttackAnimClip.name].speed = 1.0f;
     }
 
     void DamageTweenEffect()
