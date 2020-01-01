@@ -24,7 +24,7 @@ public class ExplosionSkill : MonoBehaviour {
             Rigidbody rigid = col.GetComponent<Rigidbody>();
             if(rigid != null)
             {
-                col.gameObject.GetComponent<GoblinControl>().HP -= 25;
+                col.gameObject.GetComponent<GoblinControl>().HP -= 32;
                 rigid.AddExplosionForce(power, explosionPos, radius, upwardsModifier);
             }
         }

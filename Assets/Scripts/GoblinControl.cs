@@ -229,7 +229,7 @@ public class GoblinControl : MonoBehaviour
         //플레이어의 공격에 맞았다면.
         if (other.gameObject.CompareTag("PlayerAttack") == true)
         {
-            HP -= 10;
+            HP -= 21;
             if (HP > 0)
             {
                 //피격 이펙트 생성.

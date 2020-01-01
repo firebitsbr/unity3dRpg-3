@@ -46,7 +46,7 @@ public class FighterControl : MonoBehaviour {
     public TrailRenderer AttackTrailRenderer = null;
     public CapsuleCollider AttackCapsuleCollider = null;
     public GameObject SkillEffect = null;
-
+    public GameObject DamageEffect = null;
     [Header("전투 속성")]
     public int HP = 570;
 
@@ -74,6 +74,8 @@ public class FighterControl : MonoBehaviour {
         myAnimation[DamageAnimClip.name].wrapMode = WrapMode.Once;
         myAnimation[DamageAnimClip.name].layer = 10;
         myAnimation[DieAnimClip.name].wrapMode = WrapMode.Once;
+        myAnimation[DieAnimClip.name].speed =0.7f;
+
         myAnimation[DieAnimClip.name].layer = 10;
 
         AddAnimationEvent(Attack1AnimClip, "OnAttackAnimFinished");
@@ -464,9 +466,9 @@ public class FighterControl : MonoBehaviour {
             if (HP > 0)
             {
                 //피격 이펙트 생성.
-                //Instantiate(DamageEffect, other.transform.position, Quaternion.identity);
+                Instantiate(DamageEffect, transform.position, Quaternion.identity);
                 //피격 애니메이션 재생.
-                //myAnimation.CrossFade(DamageAnimClip.name);
+                myAnimation.CrossFade(DamageAnimClip.name);
                 //피격 트위닝 이펙트 재생.
                 //DamageTweenEffect();
             }
