@@ -831,6 +831,7 @@ Animation:
   - {fileID: 7400000, guid: 43675941b57a2c04c9cc451d03a6f0e0, type: 3}
   - {fileID: 7400000, guid: f45533417edfeda4c9a2d935a1d80067, type: 3}
   - {fileID: 7400000, guid: c13909c40405f07458352b2de8adc1a3, type: 3}
+  - {fileID: 7400000, guid: c826d2d37bcc2c44f9d2d50c1677791a, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -881,6 +882,7 @@ MonoBehaviour:
   SkillAnimClip: {fileID: 7400000, guid: b1ee969c6044d2f4da41eeb156076815, type: 3}
   DamageAnimClip: {fileID: 7400000, guid: c1c045469bc06a84e9afb74c5406b781, type: 3}
   DieAnimClip: {fileID: 7400000, guid: ec7d27eb6b2630846b0b57fca7a24499, type: 3}
+  JumpAnimClip: {fileID: 7400000, guid: b34c684d3b6bf9740991f68e16e50351, type: 3}
   MyState: 0
   AttackState: 0
   NextAttack: 0
@@ -1119,7 +1121,7 @@ GameObject:
   - component: {fileID: 4012368952454821356}
   - component: {fileID: 4002507836023565390}
   - component: {fileID: 3907976372096073586}
-  - component: {fileID: 3970219819933475716}
+  - component: {fileID: 2016556402}
   m_Layer: 0
   m_Name: Sword001
   m_TagString: PlayerAttack
@@ -1202,7 +1204,7 @@ CapsuleCollider:
   m_Height: 3.2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: -0.3}
---- !u!54 &3970219819933475716
+--- !u!54 &2016556402
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1243,7 +1245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4025502745095727558}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -0.04362297, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4019797023289155048}

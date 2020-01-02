@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using UnityEngine.UI;
+using Holoville.HOTween;
 public class FighterControl : MonoBehaviour {
 
     [Header("이동관련속성.")]
@@ -31,10 +32,12 @@ public class FighterControl : MonoBehaviour {
     public AnimationClip DamageAnimClip = null;
     public AnimationClip DieAnimClip = null;
 
+    public AnimationClip JumpAnimClip = null;
+
 
     private Animation myAnimation = null;
     //캐릭터 상태 목록.
-    public enum FighterState { None, Idle, Walk, Run, Attack, Skill, Damage, Die }
+    public enum FighterState { None, Idle, Walk, Run, Attack, Skill, Damage, Die, Jump }
     [Header("캐릭터상태")]
     public FighterState MyState = FighterState.None;
 
@@ -50,8 +53,15 @@ public class FighterControl : MonoBehaviour {
     public GameObject DamageEffect = null;
     [Header("전투 속성")]
     public int HP = 570;
+    public Slider healthSlider;
+    public int currentealth;
 
-
+    // Jump
+/*
+    private float verticalVelocity;
+    private float jumpGravity = 14.0f;
+    private float jumpForce = 30.0f;
+*/
     // Use this for initialization
     void Start () {
 
@@ -72,13 +82,14 @@ public class FighterControl : MonoBehaviour {
         myAnimation[SkillAnimClip.name].wrapMode = WrapMode.Once;
         myAnimation[SkillAnimClip.name].speed = 0.87f;
 
-
         myAnimation[DamageAnimClip.name].wrapMode = WrapMode.Once;
         myAnimation[DamageAnimClip.name].layer = 10;
         myAnimation[DieAnimClip.name].wrapMode = WrapMode.Once;
         myAnimation[DieAnimClip.name].speed =0.7f;
-
         myAnimation[DieAnimClip.name].layer = 10;
+
+        myAnimation[JumpAnimClip.name].wrapMode = WrapMode.Once;
+        myAnimation[JumpAnimClip.name].layer = 10;
 
         AddAnimationEvent(Attack1AnimClip, "OnAttackAnimFinished");
         AddAnimationEvent(Attack2AnimClip, "OnAttackAnimFinished");
@@ -89,7 +100,13 @@ public class FighterControl : MonoBehaviour {
         AddAnimationEvent(DamageAnimClip, "OnDamageAnimFinished");
         AddAnimationEvent(DieAnimClip, "OnDieAnimFinished");
 
-         
+        AddAnimationEvent(JumpAnimClip, "");
+
+    }
+
+    void Hp()
+    {
+        healthSlider.value = HP;
     }
 
     // Update is called once per frame
@@ -108,13 +125,17 @@ public class FighterControl : MonoBehaviour {
         ApplyGravity();
         //공격 관련 컴포넌트 제어.
         AttackComponentControl();
+
+        //체력바 제어
+        Hp();
+
 	}
     /// <summary>
     /// 이동 관련 함수.
     /// </summary>
     void Move()
     {
-        if(CannotMove == true)
+        if (CannotMove == true)
         {
             return;
         }
@@ -136,7 +157,7 @@ public class FighterControl : MonoBehaviour {
         MoveDirection = MoveDirection.normalized;//
         //이동 속도.
         float speed = MoveSpeed;
-        if(MyState == FighterState.Run)
+        if (MyState == FighterState.Run)
         {
             speed = RunSpeed;
         }
@@ -145,8 +166,28 @@ public class FighterControl : MonoBehaviour {
 
         //이번 프레임에 움직일 양.
         Vector3 moveAmount = (MoveDirection * speed * Time.deltaTime) + gravityVector;
+
         //실제 이동.
         collisionFlags = myCharacterController.Move(moveAmount);
+
+/*      
+        //점프
+        if (myCharacterController.isGrounded)
+        //if ((collisionFlags & CollisionFlags.CollidedBelow) != 0)
+        {
+            verticalVelocity = -jumpGravity * Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                verticalVelocity = jumpForce;
+            }
+        }
+        else {
+            verticalVelocity = -jumpGravity * Time.deltaTime;
+        }
+
+        Vector3 moveVector = new Vector3(0, verticalVelocity, 0);
+        myCharacterController.Move(moveVector * Time.deltaTime);
+*/
 
     }
 
@@ -232,6 +273,17 @@ public class FighterControl : MonoBehaviour {
             case FighterState.Die:
                 myAnimation.CrossFade(DieAnimClip.name);
                 break;
+            case FighterState.Jump:
+                /*
+                 myAnimation.CrossFade(JumpAnimClip.name);
+                                HOTween.To(transform, 3, new TweenParms()
+                                    .Prop("position", new Vector3(0, transform.position.y + 4, 0), true)
+                                    //.Prop("rotation", new Vector3(0, 720, 0), true)
+                                    //.Loops(1, LoopType.Yoyo));
+                                    );
+
+                */
+                break;
         }
     }
     /// <summary>
@@ -273,6 +325,9 @@ public class FighterControl : MonoBehaviour {
                 break;
             case FighterState.Skill:
                 CannotMove = true;
+                break;
+            case FighterState.Jump:
+                MyState = FighterState.Run;
                 break;
         }
     }
@@ -334,6 +389,13 @@ public class FighterControl : MonoBehaviour {
             }
             MyState = FighterState.Skill;
         }
+
+        //마우스 오른쪽 버튼을 눌렀다면.
+        if (Input.GetKey(KeyCode.E))
+        {
+            MyState = FighterState.Jump;
+        }
+
     }
     /// <summary>
     /// 공격 애니메이션 재생이 끝나면 호출되는 애니메이션 이벤트 함수입니다.
