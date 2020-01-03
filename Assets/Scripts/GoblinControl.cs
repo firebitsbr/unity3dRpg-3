@@ -306,6 +306,11 @@ public class GoblinControl : MonoBehaviour
         //몬스터 삭제.
         Destroy(gameObject);
         //destroy.
+
+        if (TargetPlayer.GetComponent<FighterControl>().HP < TargetPlayer.GetComponent<FighterControl>().maxHP)
+        {
+            TargetPlayer.GetComponent<FighterControl>().HP += 12;
+        }
     }
     /// <summary>
     /// 애니메이션 이벤트를 추가해주는 함수.

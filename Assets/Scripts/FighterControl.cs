@@ -52,6 +52,7 @@ public class FighterControl : MonoBehaviour {
     public GameObject SkillEffect = null;
     public GameObject DamageEffect = null;
     [Header("전투 속성")]
+    public int maxHP = 570;
     public int HP = 570;
     public Slider healthSlider;
     public int currentealth;
@@ -101,6 +102,8 @@ public class FighterControl : MonoBehaviour {
         AddAnimationEvent(DieAnimClip, "OnDieAnimFinished");
 
         AddAnimationEvent(JumpAnimClip, "");
+
+        HP = maxHP;
 
     }
 
