@@ -232,6 +232,7 @@ public class GoblinControl : MonoBehaviour
             HP -= 23;
             if (HP > 0)
             {
+                Debug.Log("trigger");
                 //피격 이펙트 생성.
                 Instantiate(DamageEffect, other.transform.position, Quaternion.identity);
                 //피격 애니메이션 재생.

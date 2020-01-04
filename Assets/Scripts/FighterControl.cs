@@ -342,6 +342,7 @@ public class FighterControl : MonoBehaviour {
         //0 마우스 왼쪽버튼 , 1 마우스 오른쪽 버튼, 2는 휠버튼.
         if(Input.GetMouseButtonDown(0) == true)
         {
+            Debug.Log("1");
             //내가 공격중이 아니라면 공격을 시작하게 되고.
             if(MyState != FighterState.Attack)
             {
