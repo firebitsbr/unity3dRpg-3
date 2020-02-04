@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goblinState: 0
-  MoveSpeed: 3
+  MoveSpeed: 5.7
   TargetPlayer: {fileID: 0}
   TargetTransform: {fileID: 0}
   TargetPosition: {x: 0, y: 0, z: 0}
@@ -1063,7 +1063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166271376878894787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 4.936}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1166271376693421717}
@@ -1080,7 +1080,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 12
+  m_Radius: 3200
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1166271376878894785
 MonoBehaviour:

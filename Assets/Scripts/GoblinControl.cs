@@ -253,12 +253,12 @@ public class GoblinControl : MonoBehaviour
     }
 
     IEnumerator MoveSlow() {
-        MoveSpeed = 0.5f;
+        MoveSpeed = 0.9f;
         myAnimation[AttackAnimClip.name].speed = 0.23f;
 
-        yield return new WaitForSeconds(5.7f);
+        yield return new WaitForSeconds(3.2f);
 
-        MoveSpeed = 3;
+        MoveSpeed = 5.7f;
         myAnimation[AttackAnimClip.name].speed = 1.0f;
     }
 
@@ -310,7 +310,7 @@ public class GoblinControl : MonoBehaviour
 
         if (TargetPlayer.GetComponent<FighterControl>().HP < TargetPlayer.GetComponent<FighterControl>().maxHP)
         {
-            TargetPlayer.GetComponent<FighterControl>().HP += 12;
+            TargetPlayer.GetComponent<FighterControl>().HP += 1;
         }
     }
     /// <summary>

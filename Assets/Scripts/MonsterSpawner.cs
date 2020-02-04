@@ -13,7 +13,7 @@ public class MonsterSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        InvokeRepeating("Spawn", 3f, 5f);
+        InvokeRepeating("Spawn", 3.5f, 4f);
 	}
 
     void Spawn()

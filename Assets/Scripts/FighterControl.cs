@@ -383,8 +383,8 @@ public class FighterControl : MonoBehaviour {
             }
         }
         //마우스 오른쪽 버튼을 눌렀다면.
-        //if(Input.GetMouseButtonDown(1) == true)
-        if(Input.GetKey(KeyCode.F))
+        if(Input.GetMouseButtonDown(1) == true)
+        //if(Input.GetKey(KeyCode.F))
         {
             if(MyState == FighterState.Attack)
             {
